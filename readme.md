@@ -47,9 +47,140 @@ print('hello world')
 
 ### 2.2 列表、元组、字典
 
+序列是Python中最基本的数据结构。序列中的每个元素都分配一个数字 - 它的位置，或索引，第一个索引是0，第二个索引是1，依此类推。Python有6个序列的内置类型，但最常见的是列表和元组。序列都可以进行的操作包括索引，切片，加，乘，检查成员。
+
+- 列表
+
+```python
+list1 = ['physics', 'chemistry', 1997, 2000]
+list2 = [1, 2, 3, 4, 5 ]
+list3 = ["a", "b", "c", "d"]
+```
+
+函数 | 解释
+------|------
+cmp(list1, list2) |比较两个列表的元素
+len(list) |列表元素个数
+max(list) | 返回列表元素最大值
+min(list) | 返回列表元素最小值
+list(seq) | 将元组转换为列表
+
+list函数 | 解释
+---|---
+list.append(obj) | 在列表末尾添加新的对象
+list.count(obj) | 统计某个元素在列表中出现的次数
+list.extend(seq) | 在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）
+list.index(obj) | 从列表中找出某个值第一个匹配项的索引位置
+list.insert(index, obj) | 将对象插入列表
+list.pop([index=-1]) | 移除列表中的一个元素（默认最后一个元素），并且返回该元素的值
+list.remove(obj) | 移除列表中某个值的第一个匹配项
+list.reverse() | 反向列表中元素
+list.sort(cmp=None, key=None, reverse=False) | 对原列表进行排序
+
+---------------------------------------------------------
+
+- 元组
+
+Python的元组与列表类似，不同之处在于元组的元素不能修改。元组使用小括号，列表使用方括号。元组创建很简单，只需要在括号中添加元素，并使用逗号隔开即可。
+
+```python
+tup1 = ('physics', 'chemistry', 1997, 2000)
+tup2 = (1, 2, 3, 4, 5 )
+tup3 = "a", "b", "c", "d"
+```
+
+Python 表达式 |   结果 |   描述
+---|---|---
+len((1, 2, 3)) |   3 |   计算元素个数
+(1, 2, 3) + (4, 5, 6) |   (1, 2, 3, 4, 5, 6) |   连接
+('Hi!',) * 4 |   ('Hi!', 'Hi!', 'Hi!', 'Hi!') |   复制
+3 in (1, 2, 3) |   True |   元素是否存在
+for x in (1, 2, 3): print x, |   1 2 3 |   迭代
+
+tuple函数   | 方法及描述
+---|---
+cmp(tuple1, tuple2) | 比较两个元组元素
+len(tuple)  | 计算元组元素个数
+max(tuple) | 返回元组中元素最大值
+min(tuple) | 返回元组中元素最小值
+tuple(seq) | 将列表转换为元组
+
+-------------------------------------------------------------
+
+- 字典
+
+字典是另一种可变容器模型，且可存储任意类型对象。字典的每个键值 key=>value 对用冒号 : 分割，每个键值对之间用逗号 , 分割，整个字典包括在花括号 {} 中。 d = {key1 : value1,key2 : value2,key3 : value3}
+
+函数 | 描述
+---|---
+cmp(dict1, dict2) | 比较两个字典元素
+len(dict) | 计算字典元素个数，即键的总数
+str(dict) | 输出字典可打印的字符串表示
+type(variable) | 返回输入的变量类型，如果变量是字典就返回字典类型
+
+dict函数 | 描述
+dict.clear() | 删除字典内所有元素
+dict.copy() | 返回一个字典的浅复制
+dict.fromkeys(seq[, val]) | 创建一个新字典，以序列 seq 中元素做字典的键，val 为字典所有键对应的初始值
+dict.get(key, default=None) | 返回指定键的值，如果值不在字典中返回default值
+dict.has_key(key) | 如果键在字典dict里返回true，否则返回false
+dict.items() | 以列表返回可遍历的(键, 值) 元组数组
+dict.keys() | 以列表返回一个字典所有的键
+dict.setdefault(key, default=None) | 和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default
+dict.update(dict2) | 把字典dict2的键/值对更新到dict里
+dict.values() | 以列表返回字典中的所有值
+pop(key[,default]) | 删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值
+popitem() | 随机返回并删除字典中的一对键和值
+
 ### 2.3 条件语句
 
+```python
+if 判断条件：
+    执行语句……
+else：
+    执行语句……
+###################
+if 判断条件1:
+    执行语句1……
+elif 判断条件2:
+    执行语句2……
+elif 判断条件3:
+    执行语句3……
+else:
+    执行语句4……
+```
+
 ### 2.4 循环语句
+
+- while
+
+```python
+while 判断条件：
+    执行语句……
+```
+
+- for
+
+```python
+for iterating_var in sequence:
+    statements(s)
+```
+
+- 循环嵌套
+
+```python
+for iterating_var in sequence:
+   for iterating_var in sequence:
+      statements(s)
+   statements(s)
+```
+
+```python
+while expression:
+   while expression:
+      statement(s)
+   statement(s)
+```
 
 ### 2.5 turtle模块
 
