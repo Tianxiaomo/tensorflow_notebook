@@ -164,7 +164,87 @@ tf.add_to_collection('losses',tf.contrib.layers.l2_regularizer(regularizer)(w)) 
 loss = cem + tf.add_n(tf.get_collecton('losses))
 ```
 
+![image](image/Figure_1.png)
+
+- 生成点可视化
+
+![image](image/Figure_2.png)
+
+- 无正则化训练结果
+
+![image](image/Figure_3.png)
+
+- 正则化训练结果
+
 ### 4.5 神经网络搭建八股
+
+1. forward.py
+
+```python
+    def forward(x,regularizer):
+        w = 
+        b = 
+        y = 
+        return y
+
+    def get_weight(shape,regularizer):
+        w = tf.Variable()
+        tf.add_to_collection('losses',tf.contrib.l2_regularizer(regularizer)(w))
+        return w
+
+    def get_bias(shape):
+        b = tf.Variable()
+        return b
+```
+
+2. backward.py
+
+```python
+def backward():
+    x = tf.placeholder()
+    y_ = tf.placeholder()
+    y = forward.forward(x,REGULARIZER)
+    global_step = tf.Variable(0,trainable=False)
+    loss = 
+
+均方差
+loss_mes = tf.reduce_mean(tf.square(y_p - y_t))
+交叉熵
+ce = tf.nn.spare_sotfmax_cross_entropy_with_logits(logits = y_p,labels = tf.argmax(y_t,1))
+loss_ce = tf.reduce_mean(ce)
+
+正则化
+loss = loss_base + tf.add_n(tf.get_collection('losses'))
+
+指数衰减学习率
+lr = lr_base * lr_decay ^ ( global_step/learn_rate_step)
+- lr_base : 基础学习率
+- lr_decay : 衰减率
+- global_step : 运行几轮
+- learn_rate_step : 多少轮衰减一次
+
+滑动平均
+ema = tf.train.ExponentialMovingAverage(MOVING_AVERAGE_DECAY,global_step)
+ema_op = ema.apply(tf.trainable_variables())        #所有待优化的参数求滑动平均
+with tf.contral_dependencies([train_step,ema_op]):  #滑动平均和训练绑定为一个节点
+    train_op = tf.no_np(name='train')
+
+
+train_step = tf.train.GradientDesentOptimizer(lr).minimize(loss,global_step = global_step)
+
+with tf.Session() as sess:
+    init_op = tf.global_variables_initializer()
+    sess.run(init_op)
+
+    for i in range(STEPS):
+        sess.run(train_step,feed_dict={x: ,y_: })
+        if i % 轮数 ==0：
+            print
+
+if __name__ = '__main__':
+    backward()
+
+```
 
 ## 5. MNIST识别-1
 

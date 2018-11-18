@@ -10,7 +10,7 @@ STEPS = 20000
 COST = 1
 PROFIT = 9
 
-rdm = np.random.RandomState(seed)
+rdm = np.random.seed(seed)
 X = rdm.rand(32,2)
 Y_ = [[x1 + x2 + (rdm.rand()/10 - 0.05)]for (x1,x2) in X]
 
